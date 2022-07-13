@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Dokdo";
+  src: url("../assets/fonts/EastSeaDokdo-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gowun";
+  src: url("../assets/fonts/GowunBatang-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "B612";
+  src: url("../assets/fonts/B612-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
