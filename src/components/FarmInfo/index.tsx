@@ -2,18 +2,18 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getRemaining } from "../../lib/getRemaining";
 
-interface FarmStatusProps {
+interface FarmInfoProps {
   temperature: number;
   humidity: number;
-  remaining: Date;
+  scheduledDate: Date;
 }
 
-const FarmStatus = ({ temperature, humidity, remaining }: FarmStatusProps) => {
+const FarmInfo = ({ temperature, humidity, scheduledDate }: FarmInfoProps) => {
   const [remainingTime, setRemainingTime] = useState<string>("");
 
   useEffect(() => {
     const Timer = setInterval(() => {
-      setRemainingTime(getRemaining(remaining));
+      setRemainingTime(getRemaining(scheduledDate));
     }, 1000);
 
     return () => {
@@ -71,15 +71,16 @@ const FarmStatus = ({ temperature, humidity, remaining }: FarmStatusProps) => {
       </Switch>
       <InputWrapper>
         <span>물 주기 설정</span>
-        <input type="number" min={0} max={23} />
+        <input type="number" min={0} max={168} placeholder="3" />
         <span>H</span>
-        <input type="number" min={0} max={59} />
+        <input type="number" min={0} max={59} placeholder="0" />
         <span>M</span>
-        <input type="number" min={0} max={59} />
+        <input type="number" min={0} max={59} placeholder="0" />
         <span>S</span>
       </InputWrapper>
       <Timer>
-        다음 물 주기까지<strong>{remainingTime}</strong>
+        {remainingTime && "다음 물 주기까지"}
+        <strong>{remainingTime ? remainingTime : "..."}</strong>
       </Timer>
     </Wrapper>
   );
@@ -90,6 +91,7 @@ const Wrapper = styled.div`
   padding-right: 1rem;
   padding-top: 0.25rem;
   padding-bottom: 1.15rem;
+  margin-right: 0.5rem;
   margin-bottom: 1.5rem;
 
   width: max-content;
@@ -181,7 +183,7 @@ const MinMax = styled.div`
 `;
 
 const Switch = styled.div`
-  height: 3rem;
+  height: 2.65rem;
 
   display: inline-flex;
   align-items: center;
@@ -239,7 +241,7 @@ const Switch = styled.div`
 
 const InputWrapper = styled.div`
   width: 100%;
-  height: 3rem;
+  height: 2.65rem;
 
   display: flex;
   justify-content: space-between;
@@ -276,4 +278,4 @@ const Timer = styled.div`
   }
 `;
 
-export default FarmStatus;
+export default FarmInfo;
