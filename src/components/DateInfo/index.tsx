@@ -18,7 +18,7 @@ const DateInfo = ({ wateredDate }: DateInfoProps) => {
       <Calendar
         onChange={onChange}
         value={value}
-        minDetail="year"
+        minDetail="month"
         maxDetail="month"
         tileClassName={({ date }): string => {
           if (date.getTime() < now)
@@ -48,8 +48,6 @@ const Wrapper = styled.div`
   margin-left: 0.5rem;
 
   max-width: max-content;
-
-  border-radius: 0.5rem;
 
   .watered {
     background-color: #66cc33;

@@ -24,7 +24,7 @@ const FarmInfo = ({ temperature, humidity, scheduledDate }: FarmInfoProps) => {
 
   return (
     <Wrapper>
-      <h2>농장 상태</h2>
+      <h3>농장 상태</h3>
       <Gauge type="temperature" value={temperature + 20}>
         온도 (℃)
         <MinMax>
@@ -87,12 +87,7 @@ const FarmInfo = ({ temperature, humidity, scheduledDate }: FarmInfoProps) => {
 };
 
 const Wrapper = styled.div`
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.25rem;
-  padding-bottom: 1.15rem;
   margin-right: 0.5rem;
-  margin-bottom: 1.5rem;
 
   width: max-content;
 
@@ -102,15 +97,11 @@ const Wrapper = styled.div`
 
   font-size: 0.75rem;
 
-  border-radius: 0.5rem;
-  border: 0.1px solid #ddd;
-
-  h2 {
+  h3 {
     margin: 0;
-    margin-top: 0.5rem;
     margin-bottom: 0.75rem;
 
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 `;
 
