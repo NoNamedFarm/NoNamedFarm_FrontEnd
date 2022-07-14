@@ -11,24 +11,37 @@ import { wateredDate } from "./lib/wateredDate";
 import { compliments } from "./lib/compliments";
 import { useMediaQuery } from "react-responsive";
 import { logo } from "./assets/images";
+import { useRef } from "react";
 
 const App = () => {
-  const isUnstable = useMediaQuery({
+  const titleRef = useRef<HTMLDivElement[]>([]);
+
+  const isNotSupported = useMediaQuery({
     query: "(max-width:359px)",
   });
 
   return (
     <>
-      {isUnstable ? (
+      {isNotSupported ? (
         <WarningWrapper>
           <img src={logo} alt="icon" /> 현재 해상도는 지원하지 않습니다.
         </WarningWrapper>
       ) : (
         <>
           <GlobalStyle />
-          <Header />
+          <div
+            ref={(itself) => {
+              if (itself) titleRef.current[0] = itself;
+            }}
+          />
+          <Header titleRef={titleRef} />
           <Wrapper>
             <Banner />
+            <div
+              ref={(itself) => {
+                if (itself) titleRef.current[1] = itself;
+              }}
+            />
             <Title>농장 정보</Title>
             <InfoWrapper>
               <FarmInfo
@@ -38,6 +51,11 @@ const App = () => {
               />
               <DateInfo wateredDate={wateredDate} />
             </InfoWrapper>
+            <div
+              ref={(itself) => {
+                if (itself) titleRef.current[2] = itself;
+              }}
+            />
             <Title>칭찬 횟수</Title>
             <GraphWrapper>
               <Graph data={compliments} />

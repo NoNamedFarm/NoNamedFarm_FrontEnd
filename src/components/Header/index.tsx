@@ -1,8 +1,12 @@
 import { icon } from "../../assets/images";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { MutableRefObject, useEffect, useState } from "react";
 
-const Header = () => {
+interface HeaderProps {
+  titleRef: MutableRefObject<HTMLHeadingElement[]>;
+}
+
+const Header = ({ titleRef }: HeaderProps) => {
   const [hideHeaderState, setHideHeaderState] = useState<boolean>(false);
 
   useEffect(() => {
@@ -25,7 +29,38 @@ const Header = () => {
     <Wrapper hideHeaderState={hideHeaderState}>
       <Image src={icon} />
       <ContentsWrapper>
-        <span>무명농</span>|<span>농장 정보</span>|<span>그래프</span>
+        <span
+          onClick={() => {
+            titleRef.current[0].scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }}
+        >
+          무명농
+        </span>
+        |
+        <span
+          onClick={() => {
+            titleRef.current[1].scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }}
+        >
+          농장 정보
+        </span>
+        |
+        <span
+          onClick={() => {
+            titleRef.current[2].scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }}
+        >
+          칭찬 횟수
+        </span>
       </ContentsWrapper>
     </Wrapper>
   );
