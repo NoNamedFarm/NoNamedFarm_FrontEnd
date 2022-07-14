@@ -31,6 +31,7 @@ const Wrapper = styled.div`
 
   span {
     font-size: 0.75rem;
+
     :first-of-type {
       margin-top: 0.5rem;
     }

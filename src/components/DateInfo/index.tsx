@@ -33,12 +33,10 @@ const DateInfo = ({ wateredDate }: DateInfoProps) => {
         }}
       />
       <InfoWrapper>
-        <div>
-          <strong /> <span>: 물을 준 날</span>
-        </div>
-        <div>
-          <strong /> <span>: 물을 주지 못한 날</span>
-        </div>
+        <strong /> <span>: 물을 준 날</span>
+      </InfoWrapper>
+      <InfoWrapper>
+        <strong /> <span>: 물을 주지 못한 날</span>
       </InfoWrapper>
     </Wrapper>
   );
@@ -72,33 +70,29 @@ const Wrapper = styled.div`
 `;
 
 const InfoWrapper = styled.div`
-  div {
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
 
-    display: flex;
-    justify-content: right;
-    align-items: center;
+  display: flex;
+  justify-content: right;
+  align-items: center;
 
-    font-size: 1rem;
+  font-size: 1rem;
 
-    strong {
-      all: unset;
+  strong {
+    all: unset;
 
-      margin-right: 0.4rem;
+    background-color: #66cc33;
 
-      width: 1rem;
-      height: 1rem;
+    margin-right: 0.4rem;
 
-      border-radius: 50%;
-    }
+    width: 1rem;
+    height: 1rem;
 
-    :first-of-type strong {
-      background-color: #66cc33;
-    }
+    border-radius: 50%;
+  }
 
-    :last-of-type strong {
-      background-color: #e1e1e1;
-    }
+  :last-of-type strong {
+    background-color: #e1e1e1;
   }
 `;
 

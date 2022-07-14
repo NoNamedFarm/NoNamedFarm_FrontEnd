@@ -231,6 +231,11 @@ const Switch = styled.div`
 `;
 
 const InputWrapper = styled.div`
+  background-color: #f6f6f6;
+
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
   width: 100%;
   height: 2.65rem;
 

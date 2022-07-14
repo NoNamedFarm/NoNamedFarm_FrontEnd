@@ -20,6 +20,7 @@ const Header = () => {
     return () => document.removeEventListener("scroll", toggleHeader);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <Wrapper hideHeaderState={hideHeaderState}>
       <Image src={icon} />
@@ -49,7 +50,7 @@ const Wrapper = styled.div<WrapperProps>`
   align-items: center;
 
   transition: top 0.25s ease;
-  z-index: 3;
+  z-index: 4;
 `;
 
 const Image = styled.img`
@@ -58,18 +59,12 @@ const Image = styled.img`
 
   object-fit: cover;
   pointer-events: auto;
-
   cursor: pointer;
 `;
 
 const ContentsWrapper = styled.div`
   color: #ddd;
   font-size: 1rem;
-
-  span:first-of-type {
-    font-size: 1rem;
-    font-weight: 600;
-  }
 
   span {
     margin-left: 0.5rem;
@@ -80,6 +75,11 @@ const ContentsWrapper = styled.div`
     font-size: 0.75rem;
 
     cursor: pointer;
+  }
+
+  span:first-of-type {
+    font-size: 1rem;
+    font-weight: 600;
   }
 `;
 
