@@ -1,9 +1,27 @@
 import { icon } from "../../assets/images";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 
 const Header = () => {
+  const [hideHeaderState, setHideHeaderState] = useState<boolean>(false);
+
+  useEffect(() => {
+    let prevScrollTop = 0;
+    const toggleHeader = () => {
+      const nextScrollTop = window.pageYOffset || 0;
+      if (prevScrollTop > 45 && nextScrollTop > prevScrollTop) {
+        setHideHeaderState(true);
+      } else if (nextScrollTop < prevScrollTop) {
+        setHideHeaderState(false);
+      }
+      prevScrollTop = nextScrollTop;
+    };
+    document.addEventListener("scroll", toggleHeader);
+    return () => document.removeEventListener("scroll", toggleHeader);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
-    <Wrapper>
+    <Wrapper hideHeaderState={hideHeaderState}>
       <Image src={icon} />
       <ContentsWrapper>
         <span>무명농</span>|<span>농장 정보</span>|<span>그래프</span>
@@ -12,10 +30,15 @@ const Header = () => {
   );
 };
 
-const Wrapper = styled.div`
+interface WrapperProps {
+  hideHeaderState: boolean;
+}
+
+const Wrapper = styled.div<WrapperProps>`
   background-color: #fff;
 
   position: fixed;
+  ${(props) => (props.hideHeaderState ? "top: -3rem;" : "top: 0;")}
 
   padding: 0.5rem;
 
@@ -25,6 +48,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
 
+  transition: top 0.25s ease;
   z-index: 3;
 `;
 
