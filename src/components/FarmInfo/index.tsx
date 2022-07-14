@@ -181,7 +181,7 @@ const Switch = styled.div`
   justify-content: center;
 
   input:checked + label button {
-    left: 3vh;
+    transform: translateX(1.05rem) translateY(-0.1vh);
   }
 
   input:checked + label {
@@ -211,15 +211,16 @@ const Switch = styled.div`
     background-color: #fff;
 
     position: absolute;
-    left: 0;
 
-    width: 0.8rem;
-    height: 0.9rem;
+    transform: translateX(-0.05rem) translateY(-0.1vh);
+
+    width: 1rem;
+    height: 1rem;
 
     border: 0.1px solid #ddd;
     border-radius: 50%;
 
-    transition: left 0.25s ease;
+    transition: transform 0.25s ease;
     pointer-events: none;
   }
 

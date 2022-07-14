@@ -67,6 +67,10 @@ const Wrapper = styled.div`
       background-color: #1087ff !important;
     }
   }
+
+  @media screen and (max-width: 767px) {
+    margin-left: 0;
+  }
 `;
 
 const InfoWrapper = styled.div`
@@ -77,6 +81,10 @@ const InfoWrapper = styled.div`
   align-items: center;
 
   font-size: 1rem;
+
+  @media screen and (max-width: 767px) {
+    margin-right: 0.5rem;
+  }
 
   strong {
     all: unset;
