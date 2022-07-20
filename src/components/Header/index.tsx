@@ -27,7 +27,15 @@ const Header = ({ titleRef }: HeaderProps) => {
 
   return (
     <Wrapper hideHeaderState={hideHeaderState}>
-      <Image src={icon} />
+      <Image
+        src={icon}
+        onClick={() => {
+          titleRef.current[0].scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }}
+      />
       <ContentsWrapper>
         <span
           onClick={() => {
